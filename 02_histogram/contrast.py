@@ -20,7 +20,7 @@ def adjust_contrast(image, alpha):
 good = img_gray.copy()
 
 # high contrast
-high = adjust_contrast(img_gray, 2.5)
+high = adjust_contrast(img_gray, 2)
 
 # low contrast
 low = adjust_contrast(img_gray, 0.3)
