@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-# read image using grayscale mode
+# read image 
 img = cv2.imread("../Images/flower.jpg")
 
 # convert to RGB
@@ -27,12 +27,12 @@ noisy[coords[0], coords[1], :] = 0
 plt.figure(figsize=(8,4))
 
 plt.subplot(1,2,1)
-plt.imshow(img, cmap='gray')
+plt.imshow(img)
 plt.title("Original Image")
 plt.axis("off")
 
 plt.subplot(1,2,2)
-plt.imshow(noisy, cmap='gray')
+plt.imshow(noisy)
 plt.title("Salt & Pepper Noise")
 plt.axis("off")
 

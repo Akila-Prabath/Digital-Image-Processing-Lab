@@ -2,21 +2,20 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-# read image 
+# read image
 img = cv2.imread("../Images/flower.jpg")
 
 # convert to RGB
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-# Gaussian noise
-mean = 0
-sigma = 50
-gaussian = np.random.normal(mean, sigma, img.shape)
+# Poisson noise
+vals = len(np.unique(img))
+vals = 2 ** np.ceil(np.log2(vals))
 
-noisy = img + gaussian
+noisy = np.random.poisson(img * vals) / float(vals)
 noisy = np.clip(noisy, 0, 255).astype('uint8')
 
-# show images
+# Show
 plt.figure(figsize=(8,4))
 
 plt.subplot(1,2,1)
@@ -26,7 +25,7 @@ plt.axis("off")
 
 plt.subplot(1,2,2)
 plt.imshow(noisy)
-plt.title("Gaussian Noise")
+plt.title("Poisson Noise")
 plt.axis("off")
 
 plt.show()
